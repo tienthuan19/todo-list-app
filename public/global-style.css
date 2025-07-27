@@ -1,31 +1,26 @@
-/* Set up a mobile-first viewport and base styles */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+html {
   box-sizing: border-box;
-  width: 100vw;
-  min-height: 100vh;
-  font-size: 16px;
-  font-family: system-ui, sans-serif;
-  background: black;
-  color: #222;
-  overflow-x: hidden;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit; /* Giúp quản lý box-sizing nhất quán hơn */
 }
 
-/* Make sure the layout fits typical mobile screens */
 body {
-  max-width: 480px;
-  margin: 0 auto;
-  background-color: #fff2f2;
-  border-radius: 40px;
-}
+  /* Reset mặc định */
+  margin-top: 10px;
+  margin: 0;
+  font-family: system-ui, sans-serif;
 
-/* Responsive adjustments for very small screens */
-@media (max-width: 480px) {
-  body {
-    max-width: 100vw;
-    padding: 0 8px;
-  }
+  /* Đây là 3 dòng quan trọng tạo ra layout của bạn */
+  max-width: 430px; /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto; /* Tự động căn giữa body */
+  background-color: #fff2f2;
+
+  /* Đảm bảo body chiếm ít nhất toàn bộ chiều cao màn hình */
+  min-height: 100vh;
+
+  /* Thêm một chút khoảng trống hai bên để nội dung không bị dính sát cạnh */
+  padding: 0 16px;
 }

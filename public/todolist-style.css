@@ -1,12 +1,14 @@
 .container {
+  margin-top: 10px;
   display: grid;
-  grid-template-rows: 200px 100px 80px 3fr;
+  grid-template-rows: 150px 70px 80px 3fr;
   gap: 10px;
   grid-template-areas:
     "remained-tasks remained-tasks"
     "banner today"
     "add-task add-task"
     "task-list task-list";
+  width: 100%;
 }
 
 .remained-tasks {
@@ -15,8 +17,7 @@
   display: flex;
   flex-flow: column;
   justify-content: start;
-  width: 480px;
-  position: fixed;
+
   border-radius: 40px;
 }
 
@@ -31,7 +32,7 @@
   font-family: "Bitcount";
   color: black;
   font-weight: 400;
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 0;
 }
 .remained-tasks-infor p {
@@ -49,22 +50,24 @@
   grid-area: banner;
   background-color: #e5e0ff;
   border-radius: 20px;
-  margin-left: 10px;
+  margin-left: 1px;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner p {
   display: flex;
-  margin-top: 35px;
   justify-content: space-around;
   font-weight: 900;
   font-size: 1.5rem;
+  padding-bottom: 40px;
 }
 
 .today {
   grid-area: today;
   background-color: #8ea7e9;
   border-radius: 20px;
-  margin-right: 10px;
+
   padding: 20px;
   display: flex;
   align-items: center;
@@ -74,13 +77,12 @@
 .today p {
   margin: 0;
   font-weight: 800;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: black;
 }
 
 .add-task {
   grid-area: add-task;
-  margin: 0 10px;
 }
 
 .form {
@@ -93,7 +95,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  width: 100%;
+
   box-sizing: border-box;
   background-color: #a9b5df;
 }
@@ -138,7 +140,7 @@
 
 .task-list {
   grid-area: task-list;
-  padding: 0 10px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
