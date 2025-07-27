@@ -27,7 +27,7 @@ exports.addTask = async (req, res) => {
 
     const newTask = await TaskService.createTask({ title });
     // res.status(201).json(newTask);
-    res.redirect("/tasks");
+    res.redirect("/");
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
     // console.log(error);
@@ -38,7 +38,7 @@ exports.deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
     await TaskService.deleteTask(id);
-    res.redirect("/tasks");
+    res.redirect("/");
   } catch (error) {
     console.error("Error deleting task:", error);
     res.status(500).send("Server error");
@@ -61,7 +61,7 @@ exports.updateTask = async (req, res) => {
 
   try {
     await TaskService.updateTask(taskId, { isCompleted: isCompleted });
-    res.redirect("/tasks");
+    res.redirect("/");
   } catch (err) {
     console.error("Update task error:", err);
     res.status(500).send("Error updating task");
