@@ -15,3 +15,19 @@ exports.createTask = async (data) => {
   //console.log(data);
   return await task.save();
 };
+
+exports.deleteTask = async (id) => {
+  //console.log(id);
+  return Task.findByIdAndDelete(id);
+};
+
+// services/task-service.js
+
+exports.updateTask = async (id, updateData) => {
+  try {
+    return await Task.findByIdAndUpdate(id, updateData, { new: true });
+  } catch (error) {
+    console.error("Service - updateTask error:", error);
+    throw error;
+  }
+};

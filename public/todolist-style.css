@@ -10,80 +10,101 @@
 }
 
 .remained-tasks {
-  background-color: lightblue;
+  background-color: #7286d3;
   grid-area: remained-tasks;
   display: flex;
   flex-flow: column;
   justify-content: start;
+  width: 480px;
+  position: fixed;
+  border-radius: 40px;
 }
 
 .remained-tasks-infor {
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-
-  font-weight: 900;
-  font-size: 2rem;
 }
 
+.remained-tasks-infor h1 {
+  font-family: "Bitcount";
+  color: black;
+  font-weight: 400;
+  font-size: 4rem;
+  margin-bottom: 0;
+}
+.remained-tasks-infor p {
+  font-family: "Special Gothic Expanded One";
+  font-weight: 900;
+  font-size: 2rem;
+  margin-top: 0;
+  color: #f2aaaa;
+}
 /* .remained-tasks-infor p {
   margin-top: 0;
 } */
 
 .banner {
   grid-area: banner;
-  background-color: blue;
+  background-color: #e5e0ff;
   border-radius: 20px;
   margin-left: 10px;
 }
 
 .banner p {
   display: flex;
-  margin-top: 30px;
+  margin-top: 35px;
   justify-content: space-around;
   font-weight: 900;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .today {
   grid-area: today;
-  background-color: green;
+  background-color: #8ea7e9;
   border-radius: 20px;
   margin-right: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .today p {
-  display: flex;
-  margin-top: 30px;
-  justify-content: space-around;
-
-  font-weight: 900;
+  margin: 0;
+  font-weight: 800;
   font-size: 2rem;
+  color: black;
 }
 
 .add-task {
   grid-area: add-task;
+  margin: 0 10px;
+}
+
+.form {
+  border-radius: 20px;
 }
 
 .form form {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 20px 24px;
+  border-radius: 20px;
+  padding: 20px 16px;
   display: flex;
   gap: 12px;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  background-color: #a9b5df;
 }
 
 .form form input[type="text"],
 .form form input[type="date"] {
   flex: 1;
+  font-family: "Special Gothic Expanded One";
   padding: 8px 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.2s;
@@ -95,16 +116,20 @@
 }
 
 .form form button {
-  background-color: #007bff;
+  background-color: #2d336b;
   color: #fff;
   border: none;
-  border-radius: 4px;
+
   padding: 8px 16px;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
   align-self: stretch;
   margin-left: auto;
+
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .form form button:hover {
@@ -113,7 +138,7 @@
 
 .task-list {
   grid-area: task-list;
-  padding: 0 20px;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -121,16 +146,16 @@
 }
 
 .task-item {
+  border-radius: 20px;
+  font-family: "Special Gothic Expanded One";
+  padding: 20px 16px;
   display: flex;
+  gap: 12px;
   align-items: center;
-  justify-content: space-between;
-  background: #888787;
-  border-radius: 8px;
-  padding: 14px 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.2s, background 0.2s;
-  font-size: 1rem;
-  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+
+  background-color: #e5e0ff;
 }
 
 .task-item span {
@@ -146,25 +171,38 @@
 
 .task-item input[type="checkbox"] {
   margin: 0;
+  width: 30px;
+  height: 30px;
 }
 
 .task-item button {
-  background: #ff4d4f;
+  background: #f2aaaa;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 6px 12px;
   cursor: pointer;
   font-size: 0.95rem;
   transition: background 0.2s;
+  height: 37px;
+
+  font-weight: bold;
+}
+.task-item:hover {
+  background: #8ea7e9;
 }
 
 .task-item button:hover {
-  background: #d9363e;
+  background: #e36387;
 }
 
 .task-item.completed {
-  text-decoration: line-through;
-  color: #b0b0b0;
-  background: #e9ecef;
+  background-color: #c6e8c3; /* Xanh lá nhạt nhìn chill chill */
+  opacity: 0.7; /* Mờ nhẹ cho ra vẻ “đã xong” */
+  text-decoration: line-through; /* Gạch ngang chữ */
+  font-style: italic; /* Bonus cho nó khác biệt */
+}
+
+.task-item.completed .task-title {
+  color: #555;
 }

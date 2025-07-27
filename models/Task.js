@@ -1,3 +1,4 @@
+// Task.js
 const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema(
@@ -8,6 +9,7 @@ const taskSchema = new mongoose.Schema(
       trim: true,
     },
     isCompleted: {
+      // Đổi tên ở đây
       type: Boolean,
       default: false,
     },
@@ -18,11 +20,5 @@ const taskSchema = new mongoose.Schema(
   },
   { collection: "Tasks" }
 );
-
-// Auto update timestamp nếu mày cần thêm sau
-// taskSchema.pre("save", function (next) {
-//   this.updatedAt = new Date();
-//   next();
-// });
 
 module.exports = mongoose.model("Task", taskSchema);

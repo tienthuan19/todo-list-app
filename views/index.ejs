@@ -3,23 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/global-style.css" />
     <link rel="stylesheet" href="/todolist-style.css" />
+
     <title>TODO LIST</title>
   </head>
   <body>
     <div class="container">
       <div class="remained-tasks">
         <div class="remained-tasks-infor">
-          <p>TASK TO DO</p>
-          <P>10+</P>
+          <h1>TASK TO DO</h1>
+          <p>Total: <%= taskCount %></p>
         </div>
       </div>
       <div class="banner">
-        <p>TO DAY IS:</p>
+        <p>DATE:</p>
       </div>
       <div class="today">
-        <p>27-7-2025</p>
+        <p id="date-time"></p>
       </div>
       <div class="add-task">
         <div class="form">
@@ -27,7 +40,7 @@
             <input
               type="text"
               name="title"
-              placeholder="Add a new task"
+              placeholder="ADD A NEW TASK"
               required
             />
             <button type="submit">Add</button>
@@ -36,10 +49,15 @@
       </div>
       <div class="task-list">
         <% tasks.forEach(task => { %>
-        <div class="task-item">
+        <div class="task-item <%= task.completed ? 'completed' : '' %>">
+          <form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
+            <input type="hidden" name="completed" value="false" />
+            <input type="checkbox" name="completed" value="true"
+            onchange="this.form.submit()" <%= task.isCompleted ? 'checked' : ''
+            %> >
+          </form>
+
           <span class="task-title"><%= task.title %></span>
-          <input type="checkbox" class="task-checkbox" <%= task.isCompleted ?
-          'checked' : '' %> />
           <form action="/tasks/<%= task._id %>?_method=DELETE" method="POST">
             <button class="delete-button">DELETE</button>
           </form>
@@ -47,5 +65,21 @@
         <% }) %>
       </div>
     </div>
+    <script>
+      function updateTime() {
+        const now = new Date();
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        };
+        const formatted = now.toLocaleString("en-GB", options);
+        document.getElementById("date-time").textContent = formatted;
+      }
+
+      setInterval(updateTime, 1000); // cập nhật mỗi giây
+      updateTime(); // gọi lần đầu
+    </script>
   </body>
 </html>
