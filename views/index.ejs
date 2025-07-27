@@ -3,7 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/global-style.css" />
+    <link rel="stylesheet" href="/todolist-style.css" />
+    <title>TODO LIST</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="remained-tasks">
+        <div class="remained-tasks-infor">
+          <p>TASK TO DO</p>
+          <P>10+</P>
+        </div>
+      </div>
+      <div class="banner">
+        <p>TO DAY IS:</p>
+      </div>
+      <div class="today">
+        <p>27-7-2025</p>
+      </div>
+      <div class="add-task">
+        <div class="form">
+          <form action="/add-task" method="POST">
+            <input
+              type="text"
+              name="task"
+              placeholder="Add a new task"
+              required
+            />
+            <button type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+      <div class="task-list">
+        <div class="task-item">
+          <span class="task-title">Làm việc nhà</span>
+          <input type="checkbox" class="task-checkbox" />
+          <button class="delete-button">Delete</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

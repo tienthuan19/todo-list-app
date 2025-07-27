@@ -1,36 +1,30 @@
 const express = require("express");
 const connectDB = require("./db-config");
-const mongoose = require("mongoose");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 🧠 Kết nối DB + import model sẵn trong đó
+// Cấu hình view engine EJS
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// Để load CSS nếu có
+app.use(express.static("public"));
+
+// Database Connection
 connectDB();
 
-// 📦 Lấy model từ mongoose sau khi đã require trong db-config
-const Task = mongoose.model("Task");
-
-const newTask = new Task({
-  title: "Hoàn thành app todo",
-  description: "Fix xong bug xong đi ngủ",
-  dueDate: new Date(),
-  priority: "high",
+//Route
+// require("./route")(app);
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
-newTask
-  .save()
-  .then(() => console.log("🎉 Task saved!"))
-  .catch((err) => console.error("💥 Error saving task:", err));
-
-// 🧪 Route test
-app.get("/tasks", (req, res) => {
-  console.log("Hello");
-});
-
-app.listen(process.env.PORT, () =>
-  console.log("🚀 Server running at http://localhost:3000")
+app.listen(port, () =>
+  console.log(`🚀 Server running at http://localhost:${port}`)
 );
