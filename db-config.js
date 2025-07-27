@@ -16,9 +16,6 @@ const connectDB = async () => {
 
     const newTask = new Task({
       title: "Hoàn thành app todo",
-      description: "Fix xong bug xong đi ngủ",
-      dueDate: new Date(),
-      priority: "high",
     });
 
     newTask

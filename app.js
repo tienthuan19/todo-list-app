@@ -20,10 +20,7 @@ app.use(express.static("public"));
 connectDB();
 
 //Route
-// require("./route")(app);
-app.get("/", (req, res) => {
-  res.render("index");
-});
+require("./route")(app);
 
 app.listen(port, () =>
   console.log(`🚀 Server running at http://localhost:${port}`)

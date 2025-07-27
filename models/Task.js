@@ -7,29 +7,11 @@ const taskSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    description: {
-      type: String,
-      default: "",
-      trim: true,
-    },
-    dueDate: {
-      type: Date,
-      required: false, // you can make it required if needed
-    },
     isCompleted: {
       type: Boolean,
       default: false,
     },
-    priority: {
-      type: String,
-      enum: ["low", "medium", "high"],
-      default: "medium",
-    },
     createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-    updatedAt: {
       type: Date,
       default: Date.now,
     },
@@ -37,10 +19,10 @@ const taskSchema = new mongoose.Schema(
   { collection: "Tasks" }
 );
 
-// Auto update updatedAt
-taskSchema.pre("save", function (next) {
-  this.updatedAt = new Date();
-  next();
-});
+// Auto update timestamp nếu mày cần thêm sau
+// taskSchema.pre("save", function (next) {
+//   this.updatedAt = new Date();
+//   next();
+// });
 
 module.exports = mongoose.model("Task", taskSchema);
